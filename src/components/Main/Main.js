@@ -24,11 +24,11 @@ class Main extends React.Component {
 		this.getStudents();
   }
 
-  
-
 	render() {
+
     const filteredStudents = this.state.data.filter(student => {
-      return student.firstName.toLowerCase().includes(this.state.search.toLocaleLowerCase())
+      const fullName = student.firstName + ' ' + student.lastName;
+      return fullName.toLowerCase().includes(this.state.search.toLowerCase())
     }) 
 
 		return (

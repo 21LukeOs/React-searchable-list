@@ -1,6 +1,6 @@
 .list-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 1px solid rgb(238, 238, 238);
   padding: 20px;
 }
@@ -29,6 +29,40 @@
 .list-item__li {
   font-weight: lighter;
   margin-top: 10px;
+}
+
+.all-grades {
+  list-style: none;
+  font-weight: lighter;
+  width: 150px;
+}
+
+.each-grade {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plus-minus-cont {
+  width: 30px;
+  display: flex;
+  margin-left: auto;
+  color: lightgrey;
+}
+
+.plus {
+  max-width: 100%;
+}
+
+.plus:hover {
+  filter: invert(100%) contrast(300%);
+}
+
+.minus {
+  max-width: 100%;
+}
+
+.minus:hover {
+  filter: invert(100%) contrast(300%);
 }
 
 @media (max-width: 894px) {
