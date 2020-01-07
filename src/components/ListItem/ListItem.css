@@ -35,11 +35,31 @@
   list-style: none;
   font-weight: lighter;
   width: 150px;
+  padding: 20px 0 0 40px;
 }
 
 .each-grade {
   display: flex;
   justify-content: space-between;
+}
+
+.tags {
+
+}
+
+.tag-input {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  outline: transparent;
+  width: 200px;
+  margin: 10px 0 0 40px;
+  padding: 10px 0;
+  font-size: large;
+  font-weight: lighter;
+}
+
+.tag-input:focus {
+  border-bottom: 1px solid black;
 }
 
 .plus-minus-cont {
@@ -49,19 +69,11 @@
   color: lightgrey;
 }
 
-.plus {
+.expand-btn {
   max-width: 100%;
 }
 
-.plus:hover {
-  filter: invert(100%) contrast(300%);
-}
-
-.minus {
-  max-width: 100%;
-}
-
-.minus:hover {
+.expand-btn:hover {
   filter: invert(100%) contrast(300%);
 }
 
@@ -81,5 +93,6 @@
   .list-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 }

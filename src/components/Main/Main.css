@@ -7,7 +7,7 @@
   overflow: auto;
 }
 
-.name-input {
+.name-input, .tag-search {
   border: none;
   border-bottom: 1px solid lightgrey;
   outline: transparent;
@@ -18,7 +18,7 @@
   font-weight: lighter;
 }
 
-.name-input:focus {
+.name-input:focus, .tag-search:focus {
   border-bottom: 1px solid black;
 }
 
