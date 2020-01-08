@@ -7,7 +7,7 @@
   overflow: auto;
 }
 
-.name-input, .tag-search {
+.name-input, .tag-input {
   border: none;
   border-bottom: 1px solid lightgrey;
   outline: transparent;
@@ -18,8 +18,12 @@
   font-weight: lighter;
 }
 
-.name-input:focus, .tag-search:focus {
+.name-input:focus, .tag-input:focus {
   border-bottom: 1px solid black;
+}
+
+.no-students {
+  padding-left: 20px;
 }
 
 @media (max-width: 768px) {

@@ -16,7 +16,6 @@ class ListItem extends React.Component {
   
   handleChange = (e) => {
     if (e.keyCode === 13 && e.target.value !== '') {
-      console.log(e.target.value, e.target.id)
       this.props.setTags(e.target.value, e.target.id);
       e.target.value = '';
     }
@@ -42,10 +41,6 @@ class ListItem extends React.Component {
 		const average = gradesTypeNumber.reduce((a, b) => a + b, 0) / grades.length;
 
     const fullName = `${firstName} ${lastName}`;
-    
-    // const allTags = tags.map(tag => {
-    //   return <div className='tag' key={Math.random()}>{tag}</div>
-    // })
 
 		const allGrades = grades.map((grade, i) => {
 			return (
@@ -60,7 +55,7 @@ class ListItem extends React.Component {
 			<>
 				<div className='all-grades'>{allGrades}</div>
 				<div className='tags'>{tags ? tags.map(tag => {return <div className='tag' key={Math.random()}>{tag}</div>}) : null}</div>
-				<input className='tag-input' type='text' placeholder='Add a tag' id={id} onKeyDown={this.handleChange} />
+				<input className='add-tag-input' type='text' placeholder='Add a tag' id={id} onKeyDown={this.handleChange} />
 			</>
 		);
 

@@ -44,10 +44,21 @@
 }
 
 .tags {
-
+  display: flex;
+  padding: 20px 0 0 40px;
 }
 
-.tag-input {
+.tag {
+  background: rgb(224, 224, 224);
+  min-width: 60px;
+  text-align: center;
+  padding: 10px 10px;
+  margin-right: 10px;
+  border-radius: 3px;
+  font-weight: lighter;
+}
+
+.add-tag-input {
   border: none;
   border-bottom: 1px solid lightgrey;
   outline: transparent;
@@ -58,7 +69,7 @@
   font-weight: lighter;
 }
 
-.tag-input:focus {
+.add-tag-input:focus {
   border-bottom: 1px solid black;
 }
 

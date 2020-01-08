@@ -7,7 +7,7 @@ class Main extends React.Component {
 	state = {
     data: [], 
     searchNames: '', 
-    searchTags: '',
+    searchTags: ''
   };
 
 	getStudents = () => {
@@ -16,49 +16,40 @@ class Main extends React.Component {
 				data: res.data.students
 			});
 		});
-	};
+  };
+  
+  componentDidMount() {
+    this.getStudents();
+	}
 
 	searchNames = e => {
 		this.setState({ searchNames: e.target.value });
   };
   
   handleTagUpdate = (newTag, id) => {
-    this.setState(prevState => ({ data: this.state.data.map(student => {
-      if(student.id === id && prevState.tags) {
-        student.tags = prevState.tags.concat(newTag);
+    this.setState(prevState => ({ data: this.state.data.map((student, i) => {
+      if(student.id === id && prevState.data[i].tags) {
+        student.tags = student.tags.concat(newTag);
+        return student;
       }
-      if(student.id === id && !prevState.tags) {
+      if(student.id === id && !prevState.data[i].tags) {
         student.tags = [newTag];
+        return student;
       }
       return student;
     }) }))
   }
-  //tags: prevState.tags.concat(newTag)
 
 	searchTags = e => {
 		this.setState({ searchTags: e.target.value });
-	};
-
-	componentDidMount() {
-    this.getStudents();
-    // this.setState({ data: this.state.data.map(student => {
-    //     return student.tags = [];
-    // }) })
-	}
+  };
 
 	render() {
-    console.log(this.state.data)
-		const filteredStudents = this.state.data.filter(student => {
-			const fullName = student.firstName + ' ' + student.lastName;
-			return fullName
-				.toLowerCase()
-				.includes(this.state.searchNames.toLowerCase());
-		});
-
-		// const filteredByTags = this.state.data.filter(student => {
-		//   return student.tags.toLowerCase().includes(this.state.searchTags.toLowerCase())
-		// })
-
+		const filteredStudents = this.state.data.filter((student) => {
+      const fullName = student.firstName + ' ' + student.lastName;
+      return fullName.toLowerCase().includes(this.state.searchNames.toLowerCase());
+    });
+    
 		return (
 			<div className='container'>
 				<input
@@ -69,20 +60,18 @@ class Main extends React.Component {
 					onChange={this.searchNames}
 				/>
 				<input
-					className='tag-search'
-					id='tag-search'
+					className='tag-input'
+					id='tag-input'
 					type='text'
 					placeholder='Search by tags'
 					onChange={this.searchTags}
 				/>
 				<div className='student-list'>
-					{this.state.data ? (
+					{
 						filteredStudents.map(student => (
 							<ListItem key={student.id} student={student} tags={this.state.tags} setTags={this.handleTagUpdate} />
 						))
-					) : (
-						<h4>No students found...</h4>
-					)}
+					}
 				</div>
 			</div>
 		);
