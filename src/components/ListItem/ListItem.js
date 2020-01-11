@@ -24,29 +24,29 @@ class ListItem extends React.Component {
 	render() {
 		const {
       id,
-			grades,
+			ratings,
 			pic,
 			firstName,
 			lastName,
 			email,
 			company,
-      skill,
+      city,
       tags
 		} = this.props.student;
 
-		const gradesTypeNumber = grades.map(grade => {
+		const gradesTypeNumber = ratings.map(grade => {
 			return parseInt(grade, 10);
 		});
 
-		const average = gradesTypeNumber.reduce((a, b) => a + b, 0) / grades.length;
+		const average = gradesTypeNumber.reduce((a, b) => a + b, 0) / ratings.length;
 
     const fullName = `${firstName} ${lastName}`;
 
-		const allGrades = grades.map((grade, i) => {
+		const allGrades = ratings.map((grade, i) => {
 			return (
 				<div className='each-grade' key={grade * Math.random()}>
-					<span>Test {i + 1}:</span>
-					<span>{grade}%</span>
+					<span>Rating {i + 1}:</span>
+					<span>{grade}/100</span>
 				</div>
 			);
 		});
@@ -71,9 +71,9 @@ class ListItem extends React.Component {
 						<li className='list-item__li list-item__company'>
 							Company: {company}
 						</li>
-						<li className='list-item__li list-item__skill'>Skill: {skill}</li>
+						<li className='list-item__li list-item__skill'>City: {city}</li>
 						<li className='list-item__li list-item__average'>
-							Average: {average.toFixed(2)}%
+							Avg Rating: {average.toFixed(2)}/100
 						</li>
 					</ul>
 					{this.state.isToggleGradesOn ? gradesAndTags : !gradesAndTags}

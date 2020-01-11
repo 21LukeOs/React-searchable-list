@@ -11,7 +11,7 @@ class Main extends React.Component {
   };
 
 	getStudents = () => {
-		axios.get(`https://www.hatchways.io/api/assessment/students`).then(res => {
+		axios.get(`https://api.jsonbin.io/b/5e1938578d761771cc8ec661`).then(res => {
 			this.setState({
 				data: res.data.students
 			});
@@ -40,12 +40,8 @@ class Main extends React.Component {
     }) }))
   }
 
-	searchTags = e => {
-		this.setState({ searchTags: e.target.value });
-  };
-
 	render() {
-		const filteredStudents = this.state.data.filter((student) => {
+		const filteredStudents = this.state.data.filter(student => {
       const fullName = student.firstName + ' ' + student.lastName;
       return fullName.toLowerCase().includes(this.state.searchNames.toLowerCase());
     });
@@ -59,17 +55,10 @@ class Main extends React.Component {
 					placeholder='Search by name'
 					onChange={this.searchNames}
 				/>
-				<input
-					className='tag-input'
-					id='tag-input'
-					type='text'
-					placeholder='Search by tags'
-					onChange={this.searchTags}
-				/>
 				<div className='student-list'>
 					{
 						filteredStudents.map(student => (
-							<ListItem key={student.id} student={student} tags={this.state.tags} setTags={this.handleTagUpdate} />
+							<ListItem key={student.id} student={student} setTags={this.handleTagUpdate} />
 						))
 					}
 				</div>
